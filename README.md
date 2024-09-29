@@ -50,6 +50,46 @@ npx expo start
 - Clarifai API: For AI image recognition and food analysis.
 - Axios: For handling API requests.
 
+# 💡 How It Works
+- Take a Picture: The user captures a photo of their plate using the in-app camera.
+- AI Analysis: The app processes the image using the Clarifai API to identify food groups on the plate.
+- Food Breakdown: It calculates the percentage of different food groups (e.g., proteins, carbs, fats) using the following structure in the request:
+
+- Open the index.tsx file located in the following path: src/screens/Home
+  
+```bash
+async function foodDetect(imageBase64: string | undefined) {
+  const response = await api.post(`/v2/models/${process.env.EXPO_PUBLIC_API_MODEL_ID}/versions/${process.env.EXPO_PUBLIC_API_MODEL_VERSION_ID}/outputs`, {
+    "user_app_id": {
+      "user_id": process.env.EXPO_PUBLIC_API_USER_APP_ID,
+      "app_id": process.env.EXPO_PUBLIC_API_APP_ID
+    },
+    "inputs": [
+      {
+        "data": {
+          "image": {
+            "base64": imageBase64
+          }
+        }
+      }
+    ]
+  });
+
+  const concepts = response.data.outputs[0].data.concepts.map((concept: any) => {
+    return {
+      name: concept.name,
+      percentage: `${Math.round(concept.value * 100)}%`
+    }
+  });
+
+  const isVegetable = foodContains(concepts, 'vegetable');
+  setMessage(isVegetable ? '' : 'Add more vegetables to your plate!');
+
+  setItems(concepts);
+  setIsLoading(false);
+}
+```
+
 # 🤝 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
