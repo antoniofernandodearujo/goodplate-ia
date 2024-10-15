@@ -2,6 +2,13 @@
 
 GoodPlate-IA is a mobile application built with Expo that uses AI to analyze images of food plates, providing a breakdown of the percentage of different food groups (e.g., proteins, vegetables, carbs) present. This project is based on a tutorial by Rodrigo Gonçalves on YouTube, and it was developed to practice AI image analysis in mobile applications.
 
+<div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+  <img src="https://github.com/antoniofernandodearujo/goodplate-ia/blob/main/img-readme/1.png" alt="Imagem 1" width="200"/>
+  <img src="https://github.com/antoniofernandodearujo/goodplate-ia/blob/main/img-readme/2.png" alt="Imagem 2" width="200"/>
+  <img src="https://github.com/antoniofernandodearujo/goodplate-ia/blob/main/img-readme/3.png" alt="Imagem 3" width="200"/>
+  <img src="https://github.com/antoniofernandodearujo/goodplate-ia/blob/main/img-readme/4.png" alt="Imagem 4" width="200"/>
+</div>
+
 # 📱 Features
 - 📊 Food Composition Analysis: Analyze your plate to see the percentage breakdown of various food groups.
 - 📸 Image Recognition: AI-powered image recognition identifies different food items on your plate using the Clarifai API.
